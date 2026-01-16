@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- XACRO definitions -->
+    <xacro:property name="base_length" value="0.4"/>
+    <xacro:property name="base_width" value="0.4"/>
+    <xacro:property name="base_height" value="0.03"/>
+
+    <xacro:property name="link1_length" value="0.05"/>
+    <xacro:property name="link1_radius" value="0.04"/>
+
+    <xacro:property name="link2_length" value="0.3"/>
+    <xacro:property name="link2_radius" value="0.04"/>
+
+    <xacro:property name="link3_length" value="0.25"/>
+    <xacro:property name="link3_radius" value="0.035"/>
+
+    <xacro:property name="link4_length" value="0.05"/>
+    <xacro:property name="link4_radius" value="0.03"/>
+
+    <xacro:property name="link5_length" value="0.05"/>
+    <xacro:property name="link5_radius" value="0.03"/>
+
+    <xacro:property name="link6_length" value="0.05"/>
+    <xacro:property name="link6_radius" value="0.03"/>
+
+    <xacro:property name="end_effector_radius" value="0.02"/>
+
+
+    <!-- LINKS -->
+    <link name="base_footprint"></link>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="grey"/>
+        </visual>
+        <xacro:box_inertia m="2.0" x="${base_length}" y="${base_width}" z="${base_height}" o_xyz="0 0 0" o_rpy="0 0 0"/>
+        <collision>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </collision>
+    </link>
+
+    <xacro:macro name="cylindrical_link" params="name length radius mass color">
+        <link name="${name}">
+            <visual>
+                <geometry>
+                    <cylinder length="${length}" radius="${radius}"/>
+                </geometry>
+                <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+                <material name="${color}"/>
+            </visual>
+            <xacro:solid_cylinder_inertia m="${mass}" r="${radius}" h="${length}" o_xyz="0 0 ${length/2}" o_rpy="0 0 0"/>
+            <collision>
+                <geometry>
+                    <cylinder length="${length}" radius="${radius}"/>
+                </geometry>
+                <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+            </collision>
+        </link>
+    </xacro:macro>
+
+    <xacro:cylindrical_link name="link1" length="${link1_length}" radius="${link1_radius}" mass="1.5" color="grey"/>
+    <xacro:cylindrical_link name="link2" length="${link2_length}" radius="${link2_radius}" mass="1.0" color="blue"/>
+    <xacro:cylindrical_link name="link3" length="${link3_length}" radius="${link3_radius}" mass="0.8" color="grey"/>
+    <xacro:cylindrical_link name="link4" length="${link4_length}" radius="${link4_radius}" mass="0.6" color="orange"/>
+    <xacro:cylindrical_link name="link5" length="${link5_length}" radius="${link5_radius}" mass="0.4" color="green"/>
+    <xacro:cylindrical_link name="link6" length="${link6_length}" radius="${link6_radius}" mass="0.2" color="red"/>
+
+    <link name="end_effector">
+        <visual>
+            <geometry>
+                <sphere radius="${end_effector_radius}"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="blue"/>
+        </visual>
+        <xacro:solid_sphere_inertia m="0.1" r="${end_effector_radius}" o_xyz="0 0 0" o_rpy="0 0 0"/>
+        <collision>
+            <geometry>
+                <sphere radius="${end_effector_radius}"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </collision>    
+    </link>
+    
+    <!-- JOINTS -->
+    <joint name="base_footprint_base" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 ${base_height/2.0}" rpy="0 0 0"/>
+    </joint>
+    
+    <joint name="base_link_link1" type="revolute">
+        <parent link="base_link"/>
+        <child link="link1"/>
+        <origin xyz="0 0 ${base_height/2.0}" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="link1_link2" type="revolute">
+        <parent link="link1"/>
+        <child link="link2"/>
+        <origin xyz="0 0 ${link1_length}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-1.57" upper="1.57" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="link2_link3" type="revolute">
+        <parent link="link2"/>
+        <child link="link3"/>
+        <origin xyz="0 0 ${link2_length}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-2.62" upper="2.62" effort="10.0" velocity="1.0"/>
+    </joint>    
+
+    <joint name="link3_link4" type="revolute">
+        <parent link="link3"/>
+        <child link="link4"/>
+        <origin xyz="0 0 ${link3_length}" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="link4_link5" type="revolute">
+        <parent link="link4"/>
+        <child link="link5"/>
+        <origin xyz="0 0 ${link4_length}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-2.35" upper="2.35" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="link5_link6" type="revolute">
+        <parent link="link5"/>
+        <child link="link6"/>
+        <origin xyz="0 0 ${link5_length}" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="1.0"/>        
+    </joint>
+
+    <joint name="link6_end_effector" type="fixed">
+        <parent link="link6"/>
+        <child link="end_effector"/>
+        <origin xyz="0 0 ${link6_length}" rpy="0 0 0"/>
+    </joint>
+
+</robot>
