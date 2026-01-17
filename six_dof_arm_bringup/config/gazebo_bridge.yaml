@@ -1,0 +1,47 @@
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS 
+
+- ros_topic_name: "/joint_states"
+  gz_topic_name: "/world/empty/model/six_dof_arm/joint_state"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "gz.msgs.Model"
+  direction: "GZ_TO_ROS"
+
+- ros_topic_name: "/base_link_link1/command"
+  gz_topic_name: "/model/six_dof_arm/joint/base_link_link1/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: "ROS_TO_GZ"
+
+- ros_topic_name: "/link1_link2/command"
+  gz_topic_name: "/model/six_dof_arm/joint/link1_link2/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: "ROS_TO_GZ"
+
+- ros_topic_name: "/link2_link3/command"
+  gz_topic_name: "/model/six_dof_arm/joint/link2_link3/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: "ROS_TO_GZ"
+
+- ros_topic_name: "/link3_link4/command"
+  gz_topic_name: "/model/six_dof_arm/joint/link3_link4/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: "ROS_TO_GZ"
+
+- ros_topic_name: "/link4_link5/command"
+  gz_topic_name: "/model/six_dof_arm/joint/link4_link5/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: "ROS_TO_GZ"
+
+- ros_topic_name: "/link5_link6/command"
+  gz_topic_name: "/model/six_dof_arm/joint/link5_link6/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: "ROS_TO_GZ"

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="base_link">
+        <mu1 value="0.2"/>
+        <mu2 value="0.2"/>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>base_link_link1</joint_name>
+            <p_gain>5.0</p_gain>
+        </plugin>  
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>link1_link2</joint_name>
+            <p_gain>3.0</p_gain>
+        </plugin>  
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>link2_link3</joint_name>
+            <p_gain>3.0</p_gain>
+        </plugin>  
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>link3_link4</joint_name>
+            <p_gain>3.0</p_gain>
+        </plugin>  
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>link4_link5</joint_name>
+            <p_gain>3.0</p_gain>
+        </plugin>  
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>link5_link6</joint_name>
+            <p_gain>3.0</p_gain>
+        </plugin>  
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+            <joint_name>base_link_link1</joint_name>
+            <joint_name>link1_link2</joint_name>
+            <joint_name>link2_link3</joint_name>
+            <joint_name>link3_link4</joint_name>
+            <joint_name>link4_link5</joint_name>
+            <joint_name>link5_link6</joint_name>
+
+        </plugin>
+    </gazebo>
+
+
+</robot>
