@@ -1,16 +1,16 @@
 <launch>
     <let
         name="rviz_config"
-        value="$(find-pkg-share six_dof_arm)/rviz/rviz.rviz"/>
+        value="$(find-pkg-share pap_arm)/rviz/rviz.rviz"/>
 
     <let    name="urdf_path" 
-            value="$(find-pkg-share six_dof_arm)/urdf/six_dof_arm.xacro"/>
+            value="$(find-pkg-share pap_arm)/urdf/pap_arm.xacro"/>
 
     <let name="gazebo_config_path"
-        value="$(find-pkg-share six_dof_arm_bringup)/config/gazebo_bridge.yaml"/>
+        value="$(find-pkg-share pap_arm_bringup)/config/gazebo_bridge.yaml"/>
     
     <let name="test_world"
-        value="$(find-pkg-share six_dof_arm_bringup)/worlds/test_world.sdf"/>
+        value="$(find-pkg-share pap_arm_bringup)/worlds/test_world.sdf"/>
     
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param  name="robot_description"

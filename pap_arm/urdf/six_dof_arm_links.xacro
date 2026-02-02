@@ -56,10 +56,10 @@
                 <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
                 <material name="${color}"/>
             </visual>
-            <xacro:solid_cylinder_inertia m="${mass}" r="${radius}" h="${length}" o_xyz="0 0 ${length/2}" o_rpy="0 0 0"/>
+            <xacro:box_inertia m="${mass}" x="${radius*2.0}" y="${radius*2.0}" z="${length}" o_xyz="0 0 ${length/2}" o_rpy="0 0 0"/>
             <collision>
                 <geometry>
-                    <cylinder length="${length}" radius="${radius}"/>
+                    <box size="${radius*2} ${radius*2} ${length}"/>
                 </geometry>
                 <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
             </collision>
@@ -69,12 +69,12 @@
     <xacro:cylindrical_link name="link1" length="${link1_length}" radius="${link1_radius}" mass="1.5" color="grey"/>
     <xacro:cylindrical_link name="link2" length="${link2_length}" radius="${link2_radius}" mass="1.0" color="blue"/>
     <xacro:cylindrical_link name="link3" length="${link3_length}" radius="${link3_radius}" mass="0.8" color="grey"/>
-    <xacro:cylindrical_link name="link4" length="${link4_length}" radius="${link4_radius}" mass="0.6" color="orange"/>
-    <xacro:cylindrical_link name="link5" length="${link5_length}" radius="${link5_radius}" mass="0.4" color="green"/>
-    <xacro:cylindrical_link name="link6" length="${link6_length}" radius="${link6_radius}" mass="0.2" color="red"/>
+    <xacro:cylindrical_link name="link4" length="${link4_length}" radius="${link4_radius}" mass="0.6" color="blue"/>
+    <xacro:cylindrical_link name="link5" length="${link5_length}" radius="${link5_radius}" mass="0.4" color="blue"/>
+    <xacro:cylindrical_link name="link6" length="${link6_length}" radius="${link6_radius}" mass="0.2" color="blue"/>
 
     <link name="end_effector">
-        <visual>
+        <!-- <visual>
             <geometry>
                 <sphere radius="${end_effector_radius}"/>
             </geometry>
@@ -87,7 +87,7 @@
                 <sphere radius="${end_effector_radius}"/>
             </geometry>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-        </collision>    
+        </collision>     -->
     </link>
     
     <!-- JOINTS -->
@@ -145,10 +145,11 @@
         <limit lower="-3.14" upper="3.14" effort="10.0" velocity="1.0"/>        
     </joint>
 
-    <joint name="link6_end_effector" type="fixed">
+    <joint name="link6_end_effector" type="continuous">
         <parent link="link6"/>
         <child link="end_effector"/>
         <origin xyz="0 0 ${link6_length}" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
     </joint>
 
 </robot>

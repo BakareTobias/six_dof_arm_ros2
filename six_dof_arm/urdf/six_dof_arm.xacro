@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-
-<robot name="six_dof_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:include filename="$(find six_dof_arm)/urdf/common_properties.urdf.xacro"/>
-    <xacro:include filename="$(find six_dof_arm)/urdf/six_dof_arm_links.xacro"/>
-    <xacro:include filename="$(find six_dof_arm)/urdf/six_dof_arm_gazebo.xacro"/>
-</robot>

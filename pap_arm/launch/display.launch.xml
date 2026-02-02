@@ -2,10 +2,10 @@
 
     <let
         name="rviz_config"
-        value="$(find-pkg-share six_dof_arm)/rviz/rviz.rviz"/>
+        value="$(find-pkg-share pap_arm)/rviz/rviz.rviz"/>
 
     <let    name="urdf_path" 
-            value="$(find-pkg-share six_dof_arm)/urdf/six_dof_arm.xacro"/>
+            value="$(find-pkg-share pap_arm)/urdf/pap_arm.xacro"/>
 
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param  name="robot_description"

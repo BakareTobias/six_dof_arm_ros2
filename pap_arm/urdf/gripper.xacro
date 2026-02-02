@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- XACRO definitions -->
+    <xacro:property name="gripper_base_length" value="0.12"/>
+    <xacro:property name="gripper_base_width" value="0.04"/>
+    <xacro:property name="gripper_base_height" value="0.01"/>
+
+    <xacro:property name="gripper_finger_length" value="0.01"/>
+    <xacro:property name="gripper_finger_width" value="0.02"/>
+    <xacro:property name="gripper_finger_height" value="0.04"/>
+
+    <xacro:property name="gripper_finger_offset" value="0.05"/>
+
+    <xacro:macro name="gripper_finger" params="name">
+
+        <link name="${name}_gripper_finger">
+            <visual>
+                <origin xyz="0.0 0.0 ${gripper_finger_height/2.0}" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${gripper_finger_length} ${gripper_finger_width} ${gripper_finger_height}"/>
+                </geometry>
+                <material name="grey"/>
+                    
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 ${gripper_finger_height/2.0}" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${gripper_finger_length} ${gripper_finger_width} ${gripper_finger_height}"/>
+                </geometry>
+            </collision>
+            <xacro:box_inertia m="3.0" x="0.02" y="0.02" z="0.04" o_xyz="0 0 0" o_rpy="0 0 0"/>
+
+        </link>
+    </xacro:macro>
+
+    <link name="gripper_base">
+        <xacro:box_inertia m="3.0" x="${gripper_base_length}" y="${gripper_base_width}" z="${gripper_base_height}" o_xyz="0 0 0" o_rpy="0 0 0"/>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="${gripper_base_length} ${gripper_base_width} ${gripper_base_height}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="${gripper_base_length} ${gripper_base_width} ${gripper_base_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <xacro:gripper_finger name="left"/>
+    <xacro:gripper_finger name="right"/>
+
+    <joint name="gripper_base_left_finger" type="prismatic">
+        <origin xyz="-${gripper_finger_offset} 0.0 ${gripper_base_height/2.0}" rpy="0.0 0.0 0.0"/>
+        <parent link="gripper_base"/>
+        <child link="left_gripper_finger"/>
+        <axis xyz="1.0 0.0 0.0"/>
+        <limit lower="0.0" upper="0.045" effort="0.0" velocity="0.0"/>
+
+    </joint>
+
+    <joint name="gripper_base_right_finger" type="prismatic">
+        <origin xyz="${gripper_finger_offset} 0.0 ${gripper_base_height/2.0}" rpy="0.0 0.0 0.0"/>
+        <parent link="gripper_base"/>
+        <child link="right_gripper_finger"/>
+        <axis xyz="1.0 0.0 0.0"/>
+        <limit lower="0.0" upper="-0.045" effort="0.0" velocity="0.0"/>
+        <mimic joint="gripper_base_left_finger" multiplier="-1.0"/>
+
+    </joint>
+
+
+
+</robot>
