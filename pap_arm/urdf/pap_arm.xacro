@@ -4,13 +4,21 @@
     <xacro:include filename="$(find pap_arm)/urdf/common_properties.urdf.xacro"/>
     <xacro:include filename="$(find pap_arm)/urdf/pap_arm_links.xacro"/>
     <xacro:include filename="$(find pap_arm)/urdf/pap_arm_gazebo.xacro"/>
-    <xacro:include filename="$(find pap_arm)/urdf/gripper.xacro"/>
+    <!-- <xacro:include filename="$(find pap_arm)/urdf/gripper.xacro"/> -->
+    <xacro:include filename="$(find pap_arm)/urdf/claw.xacro"/>
 
 
-    <joint name="end_effector_gripper" type="fixed">
+    <!-- <joint name="end_effector_gripper" type="fixed">
         <origin xyz="0.0 0.0 ${gripper_base_height/2.0}" rpy="0.0 0.0 0.0"/>
         <parent link="end_effector"/>
         <child link="gripper_base"/>
+        
+    </joint> -->
+
+    <joint name="end_effector_gripper" type="fixed">
+        <origin xyz="0.0 0.0 ${claw_base_length/2.0}" rpy="0.0 0.0 0.0"/>
+        <parent link="end_effector"/>
+        <child link="claw_base"/>
         
     </joint>
 </robot>

@@ -29,7 +29,8 @@
                     <box size="${gripper_finger_length} ${gripper_finger_width} ${gripper_finger_height}"/>
                 </geometry>
             </collision>
-            <xacro:box_inertia m="3.0" x="0.02" y="0.02" z="0.04" o_xyz="0 0 0" o_rpy="0 0 0"/>
+            <xacro:box_inertia m="3.0" x="${gripper_finger_length}" y="${gripper_finger_width}" z="${gripper_finger_height}" o_xyz="0 0 ${gripper_finger_height/2.0}" o_rpy="0 0 0"/>
+
 
         </link>
     </xacro:macro>
