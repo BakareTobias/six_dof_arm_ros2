@@ -1,0 +1,23 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: pap_arm
+    relative_path: urdf/pap_arm.xacro
+  srdf:
+    relative_path: config/pap_arm.srdf
+  package_settings:
+    author_name: tobiloba
+    author_email: tobiloba@gmail.com
+    generated_timestamp: 1770120807
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position

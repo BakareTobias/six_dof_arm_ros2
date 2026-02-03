@@ -1,35 +1,40 @@
 <launch>
     <let
-        name="rviz_config"
+        name="urdf_path" 
+        value="$(find-pkg-share pap_arm)/urdf/pap_arm.xacro"/>
+
+    <let
+        name="ros2_control_config_path"
+        value="$(find-pkg-share pap_arm_bringup)/config/ros2_controllers.yaml"/>
+    
+    <let 
+        name="rviz_config_path"
         value="$(find-pkg-share pap_arm)/rviz/rviz.rviz"/>
 
-    <let    name="urdf_path" 
-            value="$(find-pkg-share pap_arm)/urdf/pap_arm.xacro"/>
-
-    <let name="gazebo_config_path"
-        value="$(find-pkg-share pap_arm_bringup)/config/gazebo_bridge.yaml"/>
-    
-    <let name="test_world"
-        value="$(find-pkg-share pap_arm_bringup)/worlds/test_world.sdf"/>
-    
+             
+    <!-- 1. Launch the robot state publisher -->
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
-        <param  name="robot_description"
+        <param name="robot_description"
                 value="$(command 'xacro $(var urdf_path)')"/>
     </node>
-    
-    <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
-        <!-- <arg name="gz_args" value="empty.sdf -r"/> -->
-        <arg name="gz_args" value="$(var test_world) -r"/>
-    </include>
 
-
-    <node pkg="ros_gz_sim" exec="create" name="spawn_robot" output="screen" args="-topic robot_description"/>
-
-
-    <node pkg="ros_gz_bridge" exec="parameter_bridge">
-        <param name="config_file" value="$(var gazebo_config_path)"/>
+    <!-- 2. Start the robot controller manager -->
+    <node pkg="controller_manager" exec="ros2_control_node">
+        <param from="$(var ros2_control_config_path)"/>
     </node>
-    <node   pkg="rviz2" exec="rviz2" name="rviz2" args="-d $(var rviz_config)" output="screen"/>
-        
 
+    <!-- 3. Spawn joint_state_broadcaster -->
+    <node pkg="controller_manager" exec="spawner" args="joint_state_broadcaster"/>
+
+    <!-- 4a. Spawn arm_controller -->
+    <node pkg="controller_manager" exec="spawner" args="arm_controller"/>
+
+    <!-- 4b. Spawn gripper_controller -->
+    <node pkg="controller_manager" exec="spawner" args="gripper_controller"/>
+
+    <!-- 5. Launch MoveIt -->
+    <include file="$(find-pkg-share pap_arm_moveit_config)/launch/move_group.launch.py"/>
+
+    <!-- 6. Launch RViz -->
+    <node pkg="rviz2" exec="rviz2" name="rviz2" args="-d $(var rviz_config_path)" output="screen"/>
 </launch>

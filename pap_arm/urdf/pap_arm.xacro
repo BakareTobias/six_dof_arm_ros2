@@ -6,6 +6,8 @@
     <xacro:include filename="$(find pap_arm)/urdf/pap_arm_gazebo.xacro"/>
     <!-- <xacro:include filename="$(find pap_arm)/urdf/gripper.xacro"/> -->
     <xacro:include filename="$(find pap_arm)/urdf/claw.xacro"/>
+    <xacro:include filename="$(find pap_arm)/urdf/pap_arm.ros2_control.xacro"/>
+
 
 
     <!-- <joint name="end_effector_gripper" type="fixed">

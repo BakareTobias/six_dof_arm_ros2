@@ -1,0 +1,11 @@
+# Default initial positions for pap_arm's ros2_control fake system
+
+initial_positions:
+  base_link_link1: 0
+  claw_base_finger_one: 0
+  link1_link2: 0
+  link2_link3: 0
+  link3_link4: 0
+  link4_link5: 0
+  link5_link6: 0
+  link6_end_effector: 0

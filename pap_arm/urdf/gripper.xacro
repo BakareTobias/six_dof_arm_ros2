@@ -29,15 +29,15 @@
                     <box size="${gripper_finger_length} ${gripper_finger_width} ${gripper_finger_height}"/>
                 </geometry>
             </collision>
-            <xacro:box_inertia m="3.0" x="${gripper_finger_length}" y="${gripper_finger_width}" z="${gripper_finger_height}" o_xyz="0 0 ${gripper_finger_height/2.0}" o_rpy="0 0 0"/>
-
+<!--             <xacro:box_inertia m="3.0" x="${gripper_finger_length}" y="${gripper_finger_width}" z="${gripper_finger_height}" o_xyz="0 0 ${gripper_finger_height/2.0}" o_rpy="0 0 0"/>
+ -->
 
         </link>
     </xacro:macro>
 
     <link name="gripper_base">
-        <xacro:box_inertia m="3.0" x="${gripper_base_length}" y="${gripper_base_width}" z="${gripper_base_height}" o_xyz="0 0 0" o_rpy="0 0 0"/>
-        <visual name="">
+<!--         <xacro:box_inertia m="3.0" x="${gripper_base_length}" y="${gripper_base_width}" z="${gripper_base_height}" o_xyz="0 0 0" o_rpy="0 0 0"/>
+ -->        <visual name="">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <box size="${gripper_base_length} ${gripper_base_width} ${gripper_base_height}"/>

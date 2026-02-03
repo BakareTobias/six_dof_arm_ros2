@@ -11,7 +11,7 @@
 
     <xacro:property name="claw_finger_offset" value="0.05"/>
 
-    <!-- XACRO FOR CLAW FINGERS -->
+    <!-- XACRO FOR CLAWS -->
     <xacro:macro name="claw_finger" params="name">
         
         <!-- FINGER LINK 1 -->
@@ -31,7 +31,7 @@
                 </geometry>
             </collision>
 
-            <xacro:box_inertia m="0.2" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/>
+<!--             <xacro:box_inertia m="0.2" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/> -->
 
         </link>
         <!-- FINGER LINK 2 -->
@@ -52,22 +52,22 @@
                 </geometry>
             </collision>
 
-            <xacro:box_inertia m="0.1" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/>
+<!--             <xacro:box_inertia m="0.1" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/> -->
 
         </link>
 
         
 
         <joint name="finger_claw_${name}" type="fixed">
-            <origin xyz="0 0 ${claw_finger_height}" rpy="0 0.5 0"/>
+            <origin xyz="0 0 ${claw_finger_height*1.1}" rpy="0 0.5 0"/>
             <parent link="${name}_claw_finger"/>
             <child link="gripper_claw_${name}"/>
         </joint>
     </xacro:macro>
 
     <link name="claw_base">
-        <xacro:box_inertia m="3.0" x="${2*claw_base_radius}"  y="${2*claw_base_radius}"  z="${claw_base_length}"  o_xyz="0 0 0" o_rpy="0 0 0"/>
-        <visual name="">
+<!--         <xacro:box_inertia m="3.0" x="${2*claw_base_radius}"  y="${2*claw_base_radius}"  z="${claw_base_length}"  o_xyz="0 0 0" o_rpy="0 0 0"/> -->
+        <visual >
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <cylinder radius="${claw_base_radius}" length="${claw_base_length}"/>
@@ -87,30 +87,30 @@
     <xacro:claw_finger name="three"/>
 
     <joint name="claw_base_finger_one" type="revolute">
-        <origin xyz="-${claw_finger_offset} 0.0 ${claw_base_length/2}" rpy="0.0 -0.5  0.0"/>
+        <origin xyz="-${claw_finger_offset} 0.0 ${claw_base_length/1.5}" rpy="0.0 -0.5  0.0"/>
         <parent link="claw_base"/>
         <child link="one_claw_finger"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit lower="0" upper="0.75" effort="0.0" velocity="0.0"/>
+        <limit lower="0" upper="0.75" effort="10.0" velocity="10.0"/>
 
     </joint>
 
     <joint name="claw_base_finger_two" type="revolute">
-        <origin xyz="${claw_finger_offset*0.5} ${0.866*claw_finger_offset} ${claw_base_length/2}" rpy="0.0  -0.5 -2.09"/>
+        <origin xyz="${claw_finger_offset*0.5} ${0.866*claw_finger_offset} ${claw_base_length/1.5}" rpy="0.0  -0.5 -2.09"/>
         <parent link="claw_base"/>
         <child link="two_claw_finger"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit lower="0.0" upper="1.2" effort="0.0" velocity="0.0"/>
+        <limit lower="0.0" upper="1.2" effort="10.0" velocity="10.0"/>
         <mimic joint="claw_base_finger_one" multiplier="1.0"/>
 
     </joint>
 
     <joint name="claw_base_finger_three" type="revolute">
-        <origin xyz="${claw_finger_offset*0.5} ${-0.866*claw_finger_offset} ${claw_base_length/2}" rpy="0.0 -0.5 2.09"/>
+        <origin xyz="${claw_finger_offset*0.5} ${-0.866*claw_finger_offset} ${claw_base_length/1.5}" rpy="0.0 -0.5 2.09"/>
         <parent link="claw_base"/>
         <child link="three_claw_finger"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit lower="0.0" upper="1.2" effort="0.0" velocity="0.0"/>
+        <limit lower="0.0" upper="1.2" effort="10.0" velocity="10.0"/>
         <mimic joint="claw_base_finger_one" multiplier="1.0"/>
 
     </joint>
