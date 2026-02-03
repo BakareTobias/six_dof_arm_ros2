@@ -30,11 +30,19 @@
     <node pkg="controller_manager" exec="spawner" args="arm_controller"/>
 
     <!-- 4b. Spawn gripper_controller -->
-    <node pkg="controller_manager" exec="spawner" args="gripper_controller"/>
+    <node pkg="controller_manager" exec="spawner" args="claw_controller"/>
 
     <!-- 5. Launch MoveIt -->
     <include file="$(find-pkg-share pap_arm_moveit_config)/launch/move_group.launch.py"/>
 
     <!-- 6. Launch RViz -->
     <node pkg="rviz2" exec="rviz2" name="rviz2" args="-d $(var rviz_config_path)" output="screen"/>
+
+    <!-- 7. Start the commander -->
+    <node pkg="my_robot_commander_cpp" exec="commander"/>
+
+    <!-- 8. Run some commands -->
+    <!-- a. go to pose_1 -->
+    
+    
 </launch>
