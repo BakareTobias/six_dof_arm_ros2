@@ -1,7 +1,7 @@
-Pick and Place Arm(PAP) ROS2
+# Pick and Place Arm(PAP) ROS2
 A ROS2 project that models and controls a 7 degree of freedom robotic arm using gazebo and moveit. The project includes support for pick-and-place functionality.
 
-Features
+## Features
 This project includes the following packages:
 - pap_arm: urdf descriptions as well as launch file and rviz files for the robot model
 - pap_arm_bringup: stores gazebo worlds, as well as launch files for moveit
@@ -9,17 +9,23 @@ This project includes the following packages:
 - my_robot_interfaces: custom messages designed as input for controlling the messages
 - my_robot_commander_cpp: C++ package for controlling the robot in moveit with some in built functions
 
-Requirements
-Ubuntu 24.04, ROS2 Jazzy, Gazebo, Moveit, Docker*, Python 3.10, C++17
+## Requirements
+- Ubuntu 24.04
+- ROS2 Jazzy
+- Gazebo
+- Moveit
+- Docker*
+- Python 3.10
+- C++17
 
-*Docker is used to run the moveit setup assistant on ROS2 Humble in a containerized manner, due to a bug that causes the Jazzy version to crash spontaenously
+*_Docker is used to run the moveit setup assistant on ROS2 Humble in a containerized manner, due to a bug that causes the Jazzy version to crash spontaenously_
 
-Installation
+## Installation
 1. Clone the repo
-```bash
-git clone https://github.com/BakareTobias/pap_arm_ros2.git
-cd six_dof_arm_ros2
-```
+   ```bash
+   git clone https://github.com/BakareTobias/pap_arm_ros2.git
+   cd six_dof_arm_ros2
+   ```
 2. Install dependencies:
    ```
    rosdep update
@@ -30,18 +36,54 @@ cd six_dof_arm_ros2
    colcon build --symlink-install && source ~/.bashrc 
    ```
 
-Usage
+## Usage
 1. Launch the robot in rviz
-   ``` ros2 launch pap_arm display.launch.xml```
+   ```
+   ros2 launch pap_arm display.launch.xml
+   ```
 2. Launch the robot with Moveit
-   ``` ros2 launch pap_arm_bringup moveit_launch.xml ```
-3. Write commands to the robot
-   a. Send robot to a named posiion (home, pose_1,pose_2)
-     ``` ros2 topic pub /named_target std_msgs/msg/String "{data: pose_1}"```
-   b. Give robot a set of joint targets(Forward Kinematics): ensure to provide an array of EXACTLY seven floats to match the seven joints of the robot e.g.
-     ``` ros2 topic pub /joint_target my_robot_interfaces/msg/JointTarget "{joint_angles: [0.5, 0.4, 0.3, 0.4, 0.0, 0.1, 0.0]}```
-   c. Give robot a goal position and orientation(Inverse Kinematics): ensure to provide minimum SIX values for position and orientation.
-      A seventh argument determine if the robot should move to this new goal along a straight path(Cartesian Planning), and it is set to False by default
+   ```
+   ros2 launch pap_arm_bringup moveit_launch.xml
+   ```
+3. Writing commands to the robot:
+   
+   - __Send robot to a named position__ (home, pose_1,pose_2)
+     ```
+      ros2 topic pub /named_target std_msgs/msg/String "{data: pose_1}"
+     ```
+   - __Give robot a set of joint targets(Forward Kinematics):__ ensure to provide an array of EXACTLY seven floats to match the seven joints of the robot e.g.
+     ```
+      ros2 topic pub /joint_target my_robot_interfaces/msg/JointTarget "{joint_angles: [0.5, 0.4, 0.3, 0.4, 0.0, 0.1, 0.0]}
+     ```
+   - __Give robot a goal position and orientation(Inverse Kinematics):__ ensure to provide minimum SIX values for position and orientation(provided in radians).
+      A seventh argument determine if the robot should move to this new goal along a straight path(Cartesian Planning*), and it is set to False by default. e.g
+      ```
+      ros2 topic pub /pose_target my_robot_interfaces/msg/PoseTarget "{x: 0.2, y: 0.3, z: 0.4, roll: 0.2, pitch: 0.4, yaw: 0.0}"
+      ```
+      *_Note that activating cartesian planning constrains robot motions and may cause some movements to fail_
+   
+   - __Open and close the robot claw:__ claw closes on false, opens on true
+      ```
+      ros2 topic pub /open_gripper example_interfaces/msg/Bool "{data: false}"
+      ```
+## Demo
+https://github.com/user-attachments/assets/c7a039d5-02c1-41a7-8da9-66670577d86e
+
+
+
+## Troubleshooting
+
+- Action server not connected: Ensure controllers are active.
+
+- No topics appearing: Source workspace again.
+
+- MoveIt errors: Verify URDF and controllers match.
+
+## Acknoledgements
+Thanks to Edouard Renard, whose direct, well taught courses on ROS2 software concepts helped me start this project
+
+
+
 
 
 
