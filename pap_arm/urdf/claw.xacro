@@ -31,7 +31,7 @@
                 </geometry>
             </collision>
 
-<!--             <xacro:box_inertia m="0.2" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/> -->
+            <xacro:box_inertia m="0.2" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/>
 
         </link>
         <!-- FINGER LINK 2 -->
@@ -52,7 +52,7 @@
                 </geometry>
             </collision>
 
-<!--             <xacro:box_inertia m="0.1" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/> -->
+            <xacro:box_inertia m="0.1" x="${claw_finger_length}" y="${claw_finger_width}" z="${claw_finger_height}" o_xyz="0 0 ${claw_finger_height/2.0}" o_rpy="0 0 0"/>
 
         </link>
 
@@ -66,7 +66,7 @@
     </xacro:macro>
 
     <link name="claw_base">
-<!--         <xacro:box_inertia m="3.0" x="${2*claw_base_radius}"  y="${2*claw_base_radius}"  z="${claw_base_length}"  o_xyz="0 0 0" o_rpy="0 0 0"/> -->
+        <xacro:box_inertia m="3.0" x="${2*claw_base_radius}"  y="${2*claw_base_radius}"  z="${claw_base_length}"  o_xyz="0 0 0" o_rpy="0 0 0"/>
         <visual >
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
