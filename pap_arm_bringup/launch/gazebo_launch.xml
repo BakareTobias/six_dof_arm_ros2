@@ -1,5 +1,4 @@
 <launch>
-    <rosparam file="$(find mimic_joint_gazebo_tutorial)/config/gazebo/gazebo_controller.yaml" command="load" />
 
     <let
         name="rviz_config"
