@@ -8,7 +8,6 @@ Panels:
         - /Status1
         - /Grid1
         - /RobotModel1
-        - /RobotModel1/Status1
       Splitter Ratio: 0.5
     Tree Height: 555
   - Class: rviz_common/Selection
@@ -68,45 +67,65 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
+        panda_hand:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        end_effector:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        link1:
+        panda_leftfinger:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link2:
+        panda_link0:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link3:
+        panda_link1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link4:
+        panda_link2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link5:
+        panda_link3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link6:
+        panda_link4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
+        panda_link5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        panda_link6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        panda_link7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        panda_rightfinger:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -134,7 +153,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: panda_link0
     Frame Rate: 30
   Name: root
   Tools:
@@ -213,5 +232,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 1661
-  Y: 57
+  X: 1629
+  Y: 25

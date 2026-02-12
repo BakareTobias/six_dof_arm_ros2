@@ -12,7 +12,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(
-  DIRECTORY include src meshes urdf rviz launch 
+  DIRECTORY launch meshes models rviz urdf worlds
   DESTINATION share/${PROJECT_NAME} # install to share/my_robot_description
 )
 
