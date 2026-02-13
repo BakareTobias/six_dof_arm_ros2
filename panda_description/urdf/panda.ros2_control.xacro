@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+      
+  <ros2_control name="arm" type="system">
+      <hardware>
+          <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+          <plugin>mock_components/GenericSystem</plugin>
+      </hardware>
+      <joint name="panda_joint1">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_joint2">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_joint3">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_joint4">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_joint5">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_joint6">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_joint7">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_finger_joint1">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+      <joint name="panda_finger_joint2">
+          <command_interface name="position"/>
+          <state_interface name="position">
+            <param name="initial_value">0</param>
+          </state_interface>
+      </joint>
+
+  </ros2_control>
+</robot>

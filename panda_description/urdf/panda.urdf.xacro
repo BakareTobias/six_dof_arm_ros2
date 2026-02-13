@@ -4,7 +4,7 @@
   <xacro:arg name="is_ignition" default="false"/>
 
 
-  <xacro:include filename="$(find panda_description)/urdf/common_properties.urdf.xacro" />
+  <xacro:include filename="$(find panda_description)/urdf/panda.ros2_control.xacro" />
   <xacro:include filename="$(find panda_description)/urdf/arm.xacro" />
 <!--   <xacro:include filename="$(find panda_description)/urdf/sensors.xacro" /> 
   <xacro:include filename="$(find panda_description)/urdf/gazebo.xacro" />

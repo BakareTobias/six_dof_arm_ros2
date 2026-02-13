@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(panda_description)
+project(panda_controller)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -12,9 +12,8 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(
-  DIRECTORY config launch meshes models rviz urdf worlds
+  DIRECTORY config launch # assuming urdf files are in the urdf directory
   DESTINATION share/${PROJECT_NAME} # install to share/my_robot_description
 )
-
 
 ament_package()
