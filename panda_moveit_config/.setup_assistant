@@ -1,0 +1,23 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: panda_description
+    relative_path: urdf/panda.urdf.xacro
+  srdf:
+    relative_path: config/panda.srdf
+  package_settings:
+    author_name: tobi
+    author_email: tobi@mail.com
+    generated_timestamp: 1770982410
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
