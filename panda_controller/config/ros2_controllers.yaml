@@ -7,7 +7,7 @@ controller_manager:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
-    claw_controller:
+    gripper_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
@@ -17,21 +17,22 @@ controller_manager:
 arm_controller:
   ros__parameters:
     joints:
-      - base_link_link1
-      - link1_link2
-      - link2_link3
-      - link3_link4
-      - link4_link5
-      - link5_link6
-      - link6_end_effector
+      - panda_joint1
+      - panda_joint2
+      - panda_joint3
+      - panda_joint4
+      - panda_joint5
+      - panda_joint6
+      - panda_joint7
     command_interfaces:
       - position
     state_interfaces:
       - position
-claw_controller:
+gripper_controller:
   ros__parameters:
     joints:
-      - claw_base_finger_one
+      - panda_finger_joint1
+      - panda_finger_joint2
     command_interfaces:
       - position
     state_interfaces:

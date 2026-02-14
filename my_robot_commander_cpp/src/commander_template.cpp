@@ -22,7 +22,7 @@ class Commander{//class uses composition, not inheritance
             node_ = node;
 
             arm_ = std::make_shared<MoveGroupInterface>(node_, "arm");//create MoveGroupInterface for the "arm" planning group
-            gripper_ = std::make_shared<MoveGroupInterface>(node_, "claw");
+            gripper_ = std::make_shared<MoveGroupInterface>(node_, "gripper");
             arm_->setMaxVelocityScalingFactor(1.0);
             arm_->setMaxAccelerationScalingFactor(1.0);
 
@@ -134,7 +134,7 @@ class Commander{//class uses composition, not inheritance
         void openGripper()
         {
             gripper_->setStartStateToCurrentState();//set the start state to the current state
-            gripper_->setNamedTarget("claw_open");//set the named target
+            gripper_->setNamedTarget("gripper_open");//set the named target
             planAndExecute(gripper_);
 
         }
@@ -142,7 +142,7 @@ class Commander{//class uses composition, not inheritance
         void closeGripper()
         {
             gripper_->setStartStateToCurrentState();//set the start state to the current state
-            gripper_->setNamedTarget("claw_closed");//set the named target
+            gripper_->setNamedTarget("gripper_closed");//set the named target
             planAndExecute(gripper_);
         }
     
