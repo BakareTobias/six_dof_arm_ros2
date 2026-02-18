@@ -8,7 +8,14 @@
   <xacro:include filename="$(find panda_description)/urdf/arm.xacro" />
 <!--   <xacro:include filename="$(find panda_description)/urdf/sensors.xacro" />--> 
   <xacro:include filename="$(find panda_description)/urdf/gazebo.xacro" />
-  <xacro:include filename="$(find panda_description)/urdf/panda.ros2_control.xacro" />
+  <xacro:arg name="use_gazebo_sim" default="false"/>
+
+  <xacro:if value="$(arg use_gazebo_sim)">
+      <xacro:include filename="$(find panda_description)/urdf/panda_.ros2_control.xacro" />
+  </xacro:if>
+  <xacro:unless value="$(arg use_gazebo_sim)">
+      <xacro:include filename="$(find panda_description)/urdf/panda.ros2_control.xacro" />
+  </xacro:unless>
 
       
 </robot>

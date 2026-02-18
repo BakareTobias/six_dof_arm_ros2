@@ -1,0 +1,24 @@
+<launch>
+    <!-- 1. Launch Gazebo Simulation (via existing gazebo_launch.xml) -->
+    <!-- This starts Gazebo, Robot State Publisher, and spawns the robot model with proper ros2_control configuration -->
+    <include file="$(find-pkg-share panda_description)/launch/gazebo_launch.xml"/>
+
+    <!-- 2. Spawn Controllers -->
+    <!-- These are required for MoveIt to interface with the simulated robot -->
+    <node pkg="controller_manager" exec="spawner" args="joint_state_broadcaster"/>
+    <node pkg="controller_manager" exec="spawner" args="arm_controller"/>
+    <node pkg="controller_manager" exec="spawner" args="gripper_controller"/>
+
+    <!-- 3. Launch MoveIt Move Group -->
+    <include file="$(find-pkg-share panda_moveit_config)/launch/move_group.launch.py">
+        <arg name="use_sim_time" value="true"/>
+    </include>
+
+    <!-- 4. Launch RViz -->
+    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" 
+          args="-d $(find-pkg-share panda_moveit_config)/config/moveit.rviz"/>
+
+    <!-- 5. (Optional) Auto-start Pick and Place Node -->
+    <!-- <node pkg="my_robot_commander_cpp" exec="pick_and_place" output="screen"/> -->
+
+</launch>

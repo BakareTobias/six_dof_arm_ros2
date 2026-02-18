@@ -20,7 +20,7 @@
         <joint name="panda_joint7"/>
     </group>
     <group name="gripper">
-        <joint name="panda_hand_joint"/>
+
         <joint name="panda_finger_joint1"/>
         <joint name="panda_finger_joint2"/>
     </group>
@@ -62,7 +62,7 @@
         <joint name="panda_joint7" value="0.5"/>
     </group_state>
     <group_state name="gripper_open" group="gripper">
-        <joint name="panda_hand_joint" value="0"/>
+
         <joint name="panda_finger_joint1" value="0.04"/>
         <joint name="panda_finger_joint2" value="0.04"/>
     </group_state>
