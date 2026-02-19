@@ -2,6 +2,7 @@
 <robot name="panda" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:arg name="is_ignition" default="false"/>
+  <xacro:arg name="use_gazebo_sim" default="true"/>
 
 
   <xacro:include filename="$(find panda_description)/urdf/common_properties.urdf.xacro" />

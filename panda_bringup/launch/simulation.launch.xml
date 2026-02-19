@@ -1,7 +1,7 @@
 <launch>
     <!-- 1. Launch Gazebo Simulation (via existing gazebo_launch.xml) -->
     <!-- This starts Gazebo, Robot State Publisher, and spawns the robot model with proper ros2_control configuration -->
-    <include file="$(find-pkg-share panda_description)/launch/gazebo_launch.xml"/>
+    <include file="$(find-pkg-share panda_bringup)/launch/gazebo_launch.xml"/>
 
     <!-- 2. Spawn Controllers -->
     <!-- These are required for MoveIt to interface with the simulated robot -->

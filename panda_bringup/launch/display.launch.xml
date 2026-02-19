@@ -2,7 +2,7 @@
 
     <let
         name="rviz_config"
-        value="$(find-pkg-share panda_description)/rviz/rviz.rviz"/>
+        value="$(find-pkg-share panda_bringup)/rviz/rviz.rviz"/>
 
     <let    name="urdf_path" 
             value="$(find-pkg-share panda_description)/urdf/panda.urdf.xacro"/>

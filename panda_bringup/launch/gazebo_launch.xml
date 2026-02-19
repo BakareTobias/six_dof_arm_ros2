@@ -2,20 +2,20 @@
 
     <let
         name="rviz_config"
-        value="$(find-pkg-share panda_description)/rviz/rviz.rviz"/>
+        value="$(find-pkg-share panda_bringup)/rviz/rviz.rviz"/>
 
     <let    name="urdf_path" 
-            value="$(find-pkg-share panda_description)/urdf/panda.urdf.xacro use_gazebo_sim:=true"/>
+            value="$(find-pkg-share panda_description)/urdf/panda.urdf.xacro"/>
 
-    <!-- <let name="gazebo_config_path"
-        value="$(find-pkg-share pap_arm_bringup)/config/gazebo_bridge.yaml"/> -->
+    <let name="gazebo_config_path"
+        value="$(find-pkg-share panda_bringup)/config/gazebo_bridge.yaml"/>
     
     <let name="test_world"
-        value="$(find-pkg-share panda_description)/worlds/empty.world"/>
+        value="$(find-pkg-share panda_bringup)/worlds/empty.world"/>
     
     <!-- helps gazebo find meshes and models folders -->
     <set_env name="GZ_SIM_RESOURCE_PATH"
-            value="$(find-pkg-share panda_description)/..:$(find-pkg-share panda_description)/models"/>
+            value="$(find-pkg-share panda_description)/:$(find-pkg-share panda_description)/models"/>
 
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param  name="robot_description"
@@ -31,9 +31,9 @@
     <node pkg="ros_gz_sim" exec="create" name="spawn_robot" output="screen" args="-topic robot_description"/>
 
 
-    <!-- <node pkg="ros_gz_bridge" exec="parameter_bridge">
+    <node pkg="ros_gz_bridge" exec="parameter_bridge">
         <param name="config_file" value="$(var gazebo_config_path)"/>
-    </node> -->
+    </node>
     <!-- <node   pkg="rviz2" exec="rviz2" name="rviz2" args="-d $(var rviz_config)" output="screen"/> -->
         
 
