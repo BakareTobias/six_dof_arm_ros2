@@ -5,7 +5,7 @@
 
   <gazebo>
     <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-      <parameters>$(find panda_controller)/config/ros2_controllers.yaml</parameters>
+      <parameters>$(find panda_bringup)/config/ros2_controllers.yaml</parameters>
     </plugin>
   </gazebo>
 

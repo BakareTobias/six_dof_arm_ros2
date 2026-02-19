@@ -7,7 +7,7 @@
     
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-        <parameters>$(find panda_moveit_config)/config/ros2_controllers.yaml</parameters>
+        <parameters>$(find panda_bringup)/config/ros2_controllers.yaml</parameters>
     </hardware>
 
     <!-- Joint 1 -->
