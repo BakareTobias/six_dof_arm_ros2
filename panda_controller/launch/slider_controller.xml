@@ -1,0 +1,19 @@
+<launch>
+    <!-- 1. Launch Gazebo Simulation and controllers (via existing simulation.xml) -->
+    <!-- This starts Gazebo, Robot State Publisher, and spawns the robot model with proper ros2_control configuration
+        It also spawns the controllers, launches moveit and rviz -->
+    <include file="$(find-pkg-share panda_bringup)/launch/simulation.launch.xml"/>
+
+    <!-- 2. Launch GUI publisher with topic remapping -->
+    <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui">
+        <remap from="/joint_states" to="/joint_commands"/>
+    </node>
+
+    <!-- 3. Launch Slider Controller Node -->
+    <node name="slider_control" pkg="panda_controller" exec="slider_controller.py"/>
+
+
+
+
+
+</launch>
