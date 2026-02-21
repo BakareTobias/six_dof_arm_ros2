@@ -11,11 +11,9 @@
         value="$(find-pkg-share panda_bringup)/config/gazebo_bridge.yaml"/>
     
     <let name="test_world"
-        value="$(find-pkg-share panda_bringup)/worlds/empty.world"/>
+        value="$(find-pkg-share panda_bringup)/worlds/test_world.sdf"/>
     
-    <!-- helps gazebo find meshes and models folders -->
-    <set_env name="GZ_SIM_RESOURCE_PATH"
-            value="$(find-pkg-share panda_description)/:$(find-pkg-share panda_description)/models"/>
+
 
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param  name="robot_description"
