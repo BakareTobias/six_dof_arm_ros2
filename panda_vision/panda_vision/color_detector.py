@@ -89,13 +89,13 @@ class ColorDetector(Node):
 
                     # Draw bounding box + label
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 255), 2)
-                    cv2.putText(frame, color_id, (x, y - 10),
+                    cv2.putText(frame, color_id, (x, y - 10),#-10 is to give clearance between the letter and the box outline
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
 
-                    # Convert pixel -> camera frame
-                    Z = 0.1  # Assumed depth/distance
-                    Y = (cx_pix - self.cx) * Z / self.fx * -10
-                    X = (cy_pix - self.cy) * Z / self.fy
+                    # Convert pixel -> camera_optical frame
+                    Z = 1.0  # Assumed depth/distance
+                    X = (cx_pix - self.cx) * Z / self.fx
+                    Y = (cy_pix - self.cy) * Z / self.fy
 
                     try:
                         # Lookup transform camera_link -> panda_link0
@@ -103,7 +103,7 @@ class ColorDetector(Node):
                         # return translation + rotation (quaternion) 
                         t = self.tf_buffer.lookup_transform(
                             "panda_link0", 
-                            "camera_link", 
+                            "camera_link_optical", 
                             rclpy.time.Time(),
                             timeout=Duration(seconds=1.0))
 
@@ -137,10 +137,10 @@ class ColorDetector(Node):
                         pt_base = T @ pt_cam
 
                         # Adjust X coordinate for blue and green
-                        if color_id == "B":
-                            pt_base[1] -= 0.0215
-                        elif color_id == "G":
-                            pt_base[1] += 0.01
+                        #if color_id == "B":
+                        #    pt_base[1] -= 0.0215
+                        #elif color_id == "G":
+                        #    pt_base[1] += 0.01
 
                         # Publish color ID + coordinates in panda_link0 frame
                         msg_str = f"{color_id},{pt_base[0]:.3f},{pt_base[1]:.3f},{pt_base[2]:.3f}"

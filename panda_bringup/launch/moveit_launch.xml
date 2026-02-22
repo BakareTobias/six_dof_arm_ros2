@@ -1,15 +1,15 @@
 <launch>
     <let    
         name="urdf_path" 
-        value="$(find-pkg-share panda_description)/urdf/panda.urdf.xacro"/>
+        value="$(find-pkg-share panda_description)/urdf/panda.urdf.xacro use_gazebo_sim:=false"/>
 
     <let
         name="ros2_control_config_path"
-        value="$(find-pkg-share panda_controller)/config/ros2_controllers.yaml"/>
+        value="$(find-pkg-share panda_bringup)/config/ros2_controllers.yaml"/>
     
     <let
         name="rviz_config_path"
-        value="$(find-pkg-share panda_description)/rviz/rviz.rviz"/>
+        value="$(find-pkg-share panda_bringup)/rviz/rviz.rviz"/>
 
     
              

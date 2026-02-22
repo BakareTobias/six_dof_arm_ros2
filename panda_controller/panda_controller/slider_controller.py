@@ -8,6 +8,8 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
 # This node subscribes to "joint_commands" topic and 
 # publishes to "arm_controller/joint_trajectory" and "gripper_controller/joint_trajectory"
+#ros2_control connects to the robot controllers and
+#executes the trajectories sent by this node in gazebo & rviz
 class SliderControl(Node):
     def __init__(self):
         super().__init__("slider_control")
