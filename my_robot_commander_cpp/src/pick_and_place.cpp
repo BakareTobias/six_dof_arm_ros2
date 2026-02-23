@@ -33,7 +33,7 @@ bool goToPose(std::shared_ptr<MoveGroupInterface> arm, double x, double y,
   q.normalize();
 
   geometry_msgs::msg::PoseStamped target_pose;
-  target_pose.header.frame_id = "base_link";
+  target_pose.header.frame_id = "panda_link0";
   target_pose.pose.position.x = x;
   target_pose.pose.position.y = y;
   target_pose.pose.position.z = z;

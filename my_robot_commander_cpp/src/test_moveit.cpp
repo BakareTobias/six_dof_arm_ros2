@@ -66,7 +66,7 @@ int main(int argc, char** argv)//standard program entry point
     
     //creating a pose target
     geometry_msgs::msg::PoseStamped target_pose;
-    target_pose.header.frame_id = "base_link";
+    target_pose.header.frame_id = "panda_link0";
     target_pose.pose.position.x = 0.4;
     target_pose.pose.position.y = 0.7;
     target_pose.pose.position.z = 0.4;

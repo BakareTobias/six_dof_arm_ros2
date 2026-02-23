@@ -5,6 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
+        - /MotionPlanning1/Planning Metrics1
+        - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.5
     Tree Height: 163
   - Class: rviz_common/Help
@@ -35,7 +37,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Acceleration_Scaling_Factor: 0.7999999999999999
+    - Acceleration_Scaling_Factor: 0.8
       Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       Move Group Namespace: ""
@@ -66,6 +68,15 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_link_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           panda_hand:
             Alpha: 1
             Show Axes: false
@@ -125,7 +136,7 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-        Loop Animation: true
+        Loop Animation: false
         Robot Alpha: 0.5
         Robot Color: 150; 50; 150
         Show Robot Collision: false
@@ -171,6 +182,15 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_link_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           panda_hand:
             Alpha: 1
             Show Axes: false
@@ -234,7 +254,7 @@ Visualization Manager:
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
-      Velocity_Scaling_Factor: 0.7999999999999999
+      Velocity_Scaling_Factor: 0.8
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -289,5 +309,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 1516
-  Y: 40
+  X: 1484
+  Y: 8

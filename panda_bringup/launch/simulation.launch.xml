@@ -13,11 +13,15 @@
     <include file="$(find-pkg-share panda_moveit_config)/launch/move_group.launch.py">
         <arg name="use_sim_time" value="true"/>
     </include>
-
+    
     <!-- 4. Launch RViz -->
     <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" 
-          args="-d $(find-pkg-share panda_moveit_config)/config/moveit.rviz"/>
+          args="-d $(find-pkg-share panda_moveit_config)/config/moveit.rviz">
+            <param name="use_sim_time" value="true"/>
 
+    </node>
+    <!-- 7. Start the commander -->
+    <node pkg="my_robot_commander_cpp" exec="commander"/>
     <!-- 5. (Optional) Auto-start Pick and Place Node -->
     <!-- <node pkg="my_robot_commander_cpp" exec="pick_and_place" output="screen"/> -->
 
