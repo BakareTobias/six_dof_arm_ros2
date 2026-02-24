@@ -16,6 +16,12 @@
   gz_type_name: "gz.msgs.Image"
   direction: "GZ_TO_ROS"
 
+- ros_topic_name: "/camera/camera_info"
+  gz_topic_name: "/camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: "GZ_TO_ROS"
+
 - ros_topic_name: "/panda_joint1/command"
   gz_topic_name: "/model/pap_arm/joint/panda_joint1/0/cmd_pos"
   ros_type_name: "std_msgs/msg/Float64"
