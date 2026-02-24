@@ -252,6 +252,16 @@
       </inertial>
   </link>
 
+  <link name="test_link"/>
+
+  <joint name="joint_name" type="fixed">
+    <parent link="panda_link7"/>
+    <child link="test_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.21"/>
+
+    
+  </joint>
+
   <!-- Hand Joint -->
   <joint name="panda_hand_joint" type="fixed">
     <parent link="panda_link7"/>

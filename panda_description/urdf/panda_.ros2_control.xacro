@@ -72,7 +72,7 @@
         <param name="max">3.8223</param>
       </command_interface>
       <state_interface name="position">
-        <param name="initial_value">0</param>
+        <param name="initial_value">0.785</param>
       </state_interface>
     </joint>
 
@@ -94,7 +94,7 @@
         <param name="max">0.04</param>
       </command_interface>
       <state_interface name="position">
-        <param name="initial_value">0</param>
+        <param name="initial_value">0.01</param>
       </state_interface>
     </joint>
 
@@ -105,7 +105,7 @@
         <param name="max">0.04</param>
       </command_interface>
       <state_interface name="position">
-        <param name="initial_value">0</param>
+        <param name="initial_value">0.01</param>
       </state_interface>
     </joint>
 

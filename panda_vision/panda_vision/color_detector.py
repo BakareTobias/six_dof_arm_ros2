@@ -35,11 +35,10 @@ class ColorDetector(Node):
 
         # Camera intrinsic parameters (from your SDF)
         ##focal points
-        self.fx = 585.0
-        self.fy = 588.0
+        self.f = 381.36
         ##principal point (center of the image)
         self.cx = 320.0
-        self.cy = 160.0
+        self.cy = 240.0
 
         self.get_logger().info("Color Detector Node Started with TF2 lookup transform")
 
@@ -93,10 +92,10 @@ class ColorDetector(Node):
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
 
                     # Convert pixel -> camera_optical frame
-                    Z = 1.0  # Assumed depth/distance
-                    X = (cx_pix - self.cx) * Z / self.fx
-                    Y = (cy_pix - self.cy) * Z / self.fy
-
+                    Y = 1  # Fixed height of the camera above the table (adjust as needed)
+                    X = ((cx_pix - self.cx) * Y)/ self.f
+                    Z = ((cy_pix - self.cy) * Y)/ self.f 
+             
                     try:
                         # Lookup transform camera_link -> panda_link0
                         # Use Time(seconds=0) for latest available transform
@@ -132,15 +131,16 @@ class ColorDetector(Node):
                         col = np.array(trans.reshape(-1, 1))
                         T = np.hstack((T, col))
 
-                        # Transform point from camera frame to base frame
+                        # Transform point from camera_optical frame to base frame
                         pt_cam = np.array([X, Y, Z, 1.0])
                         pt_base = T @ pt_cam
 
-                        # Adjust X coordinate for blue and green
-                        #if color_id == "B":
-                        #    pt_base[1] -= 0.0215
-                        #elif color_id == "G":
-                        #    pt_base[1] += 0.01
+                        #when 2D pixel coordinates are transformed into 3D world coordinates, image is projected as 2D onto the table
+                        #however the actual blocks sit on top of the table at a fixed height
+                        #if this error is not accounted for, the robot will attempt to pick up the block at its intersection with the table
+                        #using the known height of the blocks, we can manually correct this error
+                        # Adjust Z coordinates
+                        pt_base[2] += 0.31 
 
                         # Publish color ID + coordinates in panda_link0 frame
                         msg_str = f"{color_id},{pt_base[0]:.3f},{pt_base[1]:.3f},{pt_base[2]:.3f}"
