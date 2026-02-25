@@ -140,7 +140,7 @@ class ColorDetector(Node):
                         #if this error is not accounted for, the robot will attempt to pick up the block at its intersection with the table
                         #using the known height of the blocks, we can manually correct this error
                         # Adjust Z coordinates
-                        pt_base[2] += 0.31 
+                        pt_base[2] += 0.1 
 
                         # Publish color ID + coordinates in panda_link0 frame
                         msg_str = f"{color_id},{pt_base[0]:.3f},{pt_base[1]:.3f},{pt_base[2]:.3f}"

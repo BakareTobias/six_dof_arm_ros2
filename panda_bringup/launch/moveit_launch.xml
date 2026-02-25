@@ -5,7 +5,7 @@
 
     <let
         name="ros2_control_config_path"
-        value="$(find-pkg-share panda_bringup)/config/ros2_controllers.yaml"/>
+        value="$(find-pkg-share panda_moveit_config)/config/ros2_controllers.yaml"/>
     
     <let
         name="rviz_config_path"

@@ -18,6 +18,7 @@
         <joint name="panda_joint5"/>
         <joint name="panda_joint6"/>
         <joint name="panda_joint7"/>
+        <joint name="tool_center"/>
     </group>
     <group name="gripper">
 

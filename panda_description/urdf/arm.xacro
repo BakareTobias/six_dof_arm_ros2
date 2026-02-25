@@ -252,11 +252,11 @@
       </inertial>
   </link>
 
-  <link name="test_link"/>
+  <link name="tool_center_link"/>
 
-  <joint name="joint_name" type="fixed">
+  <joint name="tool_center" type="fixed">
     <parent link="panda_link7"/>
-    <child link="test_link"/>
+    <child link="tool_center_link"/>
     <origin rpy="0 0 0" xyz="0 0 0.21"/>
 
     
