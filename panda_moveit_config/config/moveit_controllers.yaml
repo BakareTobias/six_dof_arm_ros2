@@ -20,7 +20,6 @@ moveit_simple_controller_manager:
     action_ns: follow_joint_trajectory
     default: true
 
-    
   gripper_controller:
     type: FollowJointTrajectory
     joints:
@@ -28,3 +27,8 @@ moveit_simple_controller_manager:
       - panda_finger_joint2
     action_ns: follow_joint_trajectory
     default: true
+
+trajectory_execution:
+  allowed_execution_duration_scaling: 80.0 # Increase this to allow more time for execution, especially in simulation. Raised extra high for my slow computer, but can be reduced for better performance on faster machines.
+  allowed_goal_duration_margin: 5.0
+  allowed_start_tolerance: 0.01

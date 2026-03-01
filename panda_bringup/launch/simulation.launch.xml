@@ -20,9 +20,12 @@
             <param name="use_sim_time" value="true"/>
 
     </node>
-    <!-- 7. Start the commander -->
+    <!-- 5. Start the commander -->
     <node pkg="my_robot_commander_cpp" exec="commander"/>
-    <!-- 5. (Optional) Auto-start Pick and Place Node -->
+    <!-- 6. (Optional) Auto-start Pick and Place Node -->
     <!-- <node pkg="my_robot_commander_cpp" exec="pick_and_place" output="screen"/> -->
+
+    <!-- 7.  Start the CV guided Pick & Place Node-->
+    <node pkg="my_robot_commander_cpp" exec="cv_pick_and_place"/>
 
 </launch>

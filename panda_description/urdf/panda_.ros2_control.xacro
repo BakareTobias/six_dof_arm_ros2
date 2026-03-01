@@ -91,10 +91,10 @@
     <joint name="panda_finger_joint1">
       <command_interface name="position">
         <param name="min">0.0</param>
-        <param name="max">0.04</param>
+        <param name="max">0.05</param>
       </command_interface>
       <state_interface name="position">
-        <param name="initial_value">0.01</param>
+        <param name="initial_value">0.001</param>
       </state_interface>
     </joint>
 
@@ -102,10 +102,10 @@
     <joint name="panda_finger_joint2">
       <command_interface name="position">
         <param name="min">0.0</param>
-        <param name="max">0.04</param>
+        <param name="max">0.05</param>
       </command_interface>
       <state_interface name="position">
-        <param name="initial_value">0.01</param>
+        <param name="initial_value">0.001</param>
       </state_interface>
     </joint>
 

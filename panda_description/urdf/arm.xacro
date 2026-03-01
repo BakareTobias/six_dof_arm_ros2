@@ -309,13 +309,15 @@
       </inertial>
   </link>
 
+<!-- UPPER JOINT LIMITS HAVE BEEN SET TO 0.15(3x the effective upper limit of 0.05) to cricumvent an error where
+      the gripper would tilt one side causing start state to be out of bounds-->
   <!-- Finger Joint 1 -->
   <joint name="panda_finger_joint1" type="prismatic">
     <parent link="panda_hand"/>
     <child link="panda_leftfinger"/>
     <origin rpy="0 0 0" xyz="0 0 0.0584"/>
     <axis xyz="0 1 0"/>
-    <limit effort="30.0" lower="0.0" upper="0.04" velocity="10.0"/>
+    <limit effort="30.0" lower="0.0" upper="0.15" velocity="10.0"/>
   </joint>
 
   <!-- Finger Joint 2 -->
@@ -324,7 +326,7 @@
     <child link="panda_rightfinger"/>
     <origin rpy="0 0 0" xyz="0 0 0.0584"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="30.0" lower="0.0" upper="0.04" velocity="10.0"/>
+    <limit effort="30.0" lower="0.0" upper="0.15" velocity="10.0"/>
     <!-- <mimic joint="panda_finger_joint1" multiplier="-1"/> -->
   </joint>
 

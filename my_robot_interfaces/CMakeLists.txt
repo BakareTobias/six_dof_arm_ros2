@@ -14,6 +14,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PoseTarget.msg"
   "msg/JointTarget.msg"
   "msg/CircleTarget.msg"
+  "msg/ColorCoordinates.msg"
   
 )
 

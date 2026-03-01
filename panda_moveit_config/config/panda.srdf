@@ -35,23 +35,23 @@
         <joint name="panda_joint6" value="0"/>
         <joint name="panda_joint7" value="0"/>
     </group_state>
-    <group_state name="pose_1" group="arm">
+    <group_state name="pre_pick" group="arm">
         <joint name="panda_joint1" value="0"/>
-        <joint name="panda_joint2" value="-0.9057"/>
-        <joint name="panda_joint3" value="1.3606"/>
-        <joint name="panda_joint4" value="-2.3586"/>
+        <joint name="panda_joint2" value="-1.4"/>
+        <joint name="panda_joint3" value="0"/>
+        <joint name="panda_joint4" value="-2.97"/>
         <joint name="panda_joint5" value="0"/>
-        <joint name="panda_joint6" value="2.5028"/>
+        <joint name="panda_joint6" value="2.64"/>
         <joint name="panda_joint7" value="0"/>
     </group_state>
-    <group_state name="pose_2" group="arm">
-        <joint name="panda_joint1" value="0.7854"/>
-        <joint name="panda_joint2" value="-0.5236"/>
-        <joint name="panda_joint3" value="0.7854"/>
-        <joint name="panda_joint4" value="-1.5708"/>
-        <joint name="panda_joint5" value="0.5236"/>
-        <joint name="panda_joint6" value="1.5708"/>
-        <joint name="panda_joint7" value="0.7854"/>
+    <group_state name="pre_drop" group="arm">
+        <joint name="panda_joint1" value="2.85"/>
+        <joint name="panda_joint2" value="0.48"/>
+        <joint name="panda_joint3" value="0.24"/>
+        <joint name="panda_joint4" value="-2.27"/>
+        <joint name="panda_joint5" value="-0.2"/>
+        <joint name="panda_joint6" value="3.58"/>
+        <joint name="panda_joint7" value="0.0"/>
     </group_state>
     <group_state name="pose_3" group="arm">
         <joint name="panda_joint1" value="0.0"/>
@@ -64,8 +64,8 @@
     </group_state>
     <group_state name="gripper_open" group="gripper">
 
-        <joint name="panda_finger_joint1" value="0.04"/>
-        <joint name="panda_finger_joint2" value="0.04"/>
+        <joint name="panda_finger_joint1" value="0.05"/>
+        <joint name="panda_finger_joint2" value="0.05"/>
     </group_state>
     <group_state name="gripper_closed" group="gripper">
         <joint name="panda_finger_joint1" value="0"/>

@@ -8,6 +8,7 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import String
 from cv_bridge import CvBridge
 import tf2_ros
+from my_robot_interfaces.msg import ColorCoordinates
 #import tf_transformations
 from scipy.spatial.transform import Rotation as R
 
@@ -22,7 +23,7 @@ class ColorDetector(Node):
             Image, '/camera/image_raw', self.image_callback, 10)
 
         ## Publisher
-        self.coords_pub = self.create_publisher(String, '/color_coordinates', 10)
+        self.coords_pub = self.create_publisher(ColorCoordinates, '/color_coordinates', 1)
 
         # OpenCV bridge for converting ROS Image to OpenCV format
         self.bridge = CvBridge()
@@ -94,7 +95,7 @@ class ColorDetector(Node):
                     # Convert pixel -> camera_optical frame
                     Y = 1  # Fixed height of the camera above the table (adjust as needed)
                     X = ((cx_pix - self.cx) * Y)/ self.f
-                    Z = ((cy_pix - self.cy) * Y)/ self.f 
+                    Z = -((cy_pix - self.cy) * Y)/ self.f #negative because the camera's optical frame has its positive Z axis pointing in direction of negative X axis in robot's base frame
              
                     try:
                         # Lookup transform camera_link -> panda_link0
@@ -140,12 +141,16 @@ class ColorDetector(Node):
                         #if this error is not accounted for, the robot will attempt to pick up the block at its intersection with the table
                         #using the known height of the blocks, we can manually correct this error
                         # Adjust Z coordinates
-                        pt_base[2] += 0.1 
+                        pt_base[2] += 0.07 
 
                         # Publish color ID + coordinates in panda_link0 frame
                         msg_str = f"{color_id},{pt_base[0]:.3f},{pt_base[1]:.3f},{pt_base[2]:.3f}"
-                        self.coords_pub.publish(String(data=msg_str))
-                        self.get_logger().info(msg_str)
+                        msg = ColorCoordinates()
+                        msg.color_id = color_id
+                        msg.coordinates = [pt_base[0], pt_base[1], pt_base[2]]
+                        self.coords_pub.publish(msg)
+                        #self.get_logger().info(msg_str)
+                        #wait some time before sending the next set of coordinates
                         
                     except (tf2_ros.LookupException, 
                             tf2_ros.ConnectivityException, 

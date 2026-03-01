@@ -23,10 +23,16 @@ ament_target_dependencies(commander rclcpp moveit_ros_planning_interface example
 add_executable(pick_and_place src/pick_and_place.cpp)
 ament_target_dependencies(pick_and_place rclcpp moveit_ros_planning_interface example_interfaces my_robot_interfaces)
 
+# pick_and_place node
+add_executable(cv_pick_and_place src/cv_pick_and_place.cpp)
+ament_target_dependencies(cv_pick_and_place rclcpp moveit_ros_planning_interface example_interfaces my_robot_interfaces)
+
+
 install(TARGETS
   test_moveit
   commander
   pick_and_place
+  cv_pick_and_place
   DESTINATION lib/${PROJECT_NAME}
 )
 
