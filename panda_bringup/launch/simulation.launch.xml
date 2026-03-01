@@ -28,4 +28,7 @@
     <!-- 7.  Start the CV guided Pick & Place Node-->
     <node pkg="my_robot_commander_cpp" exec="cv_pick_and_place"/>
 
+    <!-- 8. Start color detector node -->
+    <node pkg="panda_vision" exec="color_detector"/>
+
 </launch>
