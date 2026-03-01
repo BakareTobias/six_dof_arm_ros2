@@ -11,7 +11,6 @@ This project includes the following packages:
 - my_robot_interfaces: custom message types 
 - my_robot_commander_cpp: C++ nodes for controlling the robot 
 
-- 
 ## Requirements
 - Ubuntu 24.04
 - ROS2 Jazzy
