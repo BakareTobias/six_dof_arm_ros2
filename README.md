@@ -87,12 +87,19 @@ This project includes the following packages:
       ``` 
       
 ## Images and Demos
-1. Demo of named targets
-https://github.com/user-attachments/assets/a59f233c-7c78-4165-8c26-94d304840d46
+1. Demo of FK/IK
+   <video src="https://github.com/user-attachments/assets/08ed3dbd-14e0-4c73-a862-93ab2d666915" controls width="700"></video>
 2. Robot visualized in gazebo with camera view
    ![Screenshot 2026-02-20 173028](https://github.com/user-attachments/assets/c96c9e61-68b6-4852-994a-b806fa14f16d)
-3. Demo of computer guided pick and place
-   
+3. Demos of Computer-Guided Pick and Place
+
+### Case 1: Boxes Lined Up
+<video src="https://github.com/user-attachments/assets/c5f0f07d-4c11-40d3-bc2f-964c911cf458" controls width="700"></video>
+
+### Case 2: Boxes Disorganized
+<video src="https://github.com/user-attachments/assets/e6f4200a-7816-4acb-bbcb-9aea352ebb01" controls width="700"></video>
+
+
 
 
 
