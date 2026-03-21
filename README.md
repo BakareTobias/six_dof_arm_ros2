@@ -1,4 +1,4 @@
-# Vision-Guided Robotic Manipulation Pipeline using ROS2, MoveIt2, and Gazebo for Automated Object Sorting.
+# Vision-Guided Robotic Manipulation Pipeline using ROS2, MoveIt2, and Gazebo for Pick and Place Tasks.
 
 A ROS2 project that models and controls the Franka v3, a 7 degree of freedom robotic arm using rviz and moveit. The project includes a gazebo simulation of the robot performing pick and place tasks guided by computer vision.
 
