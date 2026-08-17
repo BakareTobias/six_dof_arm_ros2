@@ -102,7 +102,7 @@ class Commander{//class uses composition, not inheritance
             }
         }
          
-       void circularPath(double radius, int points)
+       void circularPath(double radius, int points)//draws a polygonal path whose center is the current pose 
         {
             arm_->setStartStateToCurrentState();//set the start state to the current state
             std::vector<geometry_msgs::msg::Pose> waypoints;//create a list of waypoints
@@ -112,7 +112,7 @@ class Commander{//class uses composition, not inheritance
             
             geometry_msgs::msg::Pose center_pose = arm_->getCurrentPose().pose;
 
-            for (int i = 1; i <= points; i++)
+            for (int i = 1; i <= (points+1); i++)
             {
                 geometry_msgs::msg::Pose pose = center_pose;
                 
